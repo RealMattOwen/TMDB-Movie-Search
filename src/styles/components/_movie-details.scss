@@ -1,0 +1,59 @@
+.movie-container {
+	margin: $m-size 0 0 0;
+}
+
+.movie-details {
+	background-color: rgba(0,0,0,0.7);
+	display: flex;
+	color: white;
+}
+
+.section {
+	&:nth-child(2) {
+		padding: $s-size $l-size $l-size;
+		p {
+			font-size: 1.5rem;
+			font-weight: 400;
+			line-height: 2.3rem;
+		}
+	}
+
+	img {
+		width: 225px;
+	}
+}
+
+.movie-title {
+	font-size: 4.5rem;
+	font-weight: 600;
+	margin: $m-size 0 $s-size;
+	text-transform: uppercase;
+}
+
+.movie-description {
+	color: rgb(1,207,115);
+	margin: 0;
+	font-weight: 500;
+}
+
+.details {
+	margin-top: $l-size;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.detail {
+	width: 50%;
+	margin: 0 0 $m-size;
+	h3 {
+		font-weight: 300;
+		margin: 0;
+		font-size: $font-size-small;
+	}
+	h2 {
+		color: rgb(1,207,115);
+		margin: 0;
+		font-weight: 500;
+		font-size: 2.4rem;
+	}
+}
