@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SearchBar from './SearchBar';
 
 export class Header extends React.Component {
     state = {
@@ -84,7 +85,14 @@ export class Header extends React.Component {
                             <img src="https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg" />
                         </a>
                         <div className="search">
-                            <input list="movies" type="text" placeholder="Search Movie Title" className="text-input" onChange={e => this.movieNameRequest(e)} onKeyPress={e => this.movieDetailsRequest(e)} />
+                            <input
+                                list="movies"
+                                type="text"
+                                placeholder="Search Movie Title"
+                                className="text-input"
+                                onChange={e => this.movieNameRequest(e)}
+                                onKeyPress={e => this.movieDetailsRequest(e)}
+                            />
                             <datalist id="movies">
                                 {this.state.movies ? this.state.movies.map(movie => {
                                     return <option key={movie.id} id={movie.id} value={movie.title} />
