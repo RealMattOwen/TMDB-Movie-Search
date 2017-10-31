@@ -33,6 +33,7 @@
     "node-sass": "4.5.3",
     "normalize.css": "7.0.0",
     "numeral": "^2.0.6",
+    "postcss-loader": "^2.0.8",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "sass-loader": "6.0.6",
@@ -42,7 +43,6 @@
   "devDependencies": {
     "cross-env": "^5.0.5",
     "dotenv": "4.0.0",
-    "postcss-loader": "^2.0.8",
     "webpack-dev-server": "2.5.1"
   }
 }
