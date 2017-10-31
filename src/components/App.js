@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from './Header';
-import { MovieDetails } from './MovieDetails';
+import MovieDetails from './MovieDetails';
 
 class App extends React.Component {
     state = {
