@@ -1,5 +1,37 @@
 .content-container {
 	margin: 0 auto;
 	padding: 0 $m-size;
-	max-width: 70rem;
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+	.content-container {
+		max-width: 58rem;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.content-container {
+		max-width: 72rem;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.content-container {
+		max-width: 80rem;
+	}
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+	.content-container {
+		max-width: 94rem;
+	}
 }

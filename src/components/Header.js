@@ -1,46 +1,40 @@
 import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
+import SuggestionsBox from './SuggestionsBox';
 
 export class Header extends React.Component {
     state = {
-        userInput: undefined,
-        movies: undefined
+        userInput: '',
+        movies: undefined,
+        selectedSuggestion: 0,
+        selectedSuggestionText: undefined
     };
     movieNameRequest = e => {
         const userInput = e.target.value.trim();
-        if (userInput.length > 1 && userInput !== this.state.userInput) {
+        if (document.getElementsByClassName('suggestion')[0].classList.contains('active')) {
             this.setState({
                 userInput
             }, () => {
-                axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=375d33fe34920fdf8cb02b7ce3600ba7`)
-                    .then(res => {
-                        if (res.data.results.length) {
-                            const movies = res.data.results.slice(0, 5);
-                            this.setState({
-                                movies
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
+                if (userInput.length > 1) {
+                    axios.get(`https://api.themoviedb.org/3/search/movie?query=${userInput}&api_key=375d33fe34920fdf8cb02b7ce3600ba7`)
+                        .then(res => {
+                            if (res.data.results.length) {
+                                document.getElementsByClassName('suggestions-box')[0].classList.add('show');
+                                const movies = res.data.results.slice(0, 5);
+                                this.setState({
+                                    movies
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
             });
         }
     };
-    movieDetailsRequest = e => {
-        // console.log(e);
-        if (e.key === 'Enter') {
-            // console.log('--------------------------');
-            // console.log(e);
-            let movieId;
-            const options = Array.from(document.getElementsByTagName('option'));
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].value === e.target.value) {
-                    movieId = options[i].id;
-                }
-            }
-
+    movieDetailsRequest = movieId => {
             axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=375d33fe34920fdf8cb02b7ce3600ba7`)
                 .then(res => {
                     const {
@@ -67,13 +61,71 @@ export class Header extends React.Component {
                         boxOffice,
                         voteAverage
                     };
+                    this.state.userInput = movie.title;
                     this.props.update({
                         movie
+                    }, () => {
+                        document.getElementsByClassName('suggestions-box')[0].classList.remove('show');
                     });
                 })
                 .catch(error => {
                     console.log(error);
                 });
+    };
+    suggestionChange = e => {
+        const userInput = e.target.value.trim();
+
+        if (userInput.length > 1) {
+            switch (e.key) {
+                case 'ArrowDown':
+                    if (this.state.selectedSuggestion > -1) document.getElementsByClassName('suggestion')[this.state.selectedSuggestion].classList.remove('active');
+                    this.setState(prevState => ({
+                        selectedSuggestion: prevState.selectedSuggestion < document.getElementsByClassName('suggestion').length - 1 ? prevState.selectedSuggestion + 1 : 0
+                    }), () => {
+                        const selectedSuggestion = document.getElementsByClassName('suggestion')[this.state.selectedSuggestion];
+                        selectedSuggestion.classList.add('active');
+                        this.setState({
+                            selectedSuggestionText: selectedSuggestion.innerText
+                        });
+                    });
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    if (this.state.selectedSuggestion > -1) document.getElementsByClassName('suggestion')[this.state.selectedSuggestion].classList.remove('active');
+                    this.setState(prevState => ({
+                        selectedSuggestion: prevState.selectedSuggestion > 0 ? prevState.selectedSuggestion - 1 : document.getElementsByClassName('suggestion').length - 1
+                    }), () => {
+                        const selectedSuggestion = document.getElementsByClassName('suggestion')[this.state.selectedSuggestion];
+                        selectedSuggestion.classList.add('active');
+                        this.setState({
+                            selectedSuggestionText: selectedSuggestion.innerText
+                        });
+                    });
+                    break;
+                case 'Enter':
+                    if (this.state.selectedSuggestion) {
+                        this.movieDetailsRequest(document.getElementsByClassName('suggestion')[this.state.selectedSuggestion].id);
+                        this.setState({
+                            selectedSuggestion: 0,
+                            selectedSuggestionText: undefined
+                        }, () => {
+                            Array.from(document.getElementsByClassName('suggestion')).forEach(suggestion => {
+                                suggestion.classList.remove('active');
+                            });
+                            document.getElementsByClassName('suggestion')[0].classList.add('active');
+                        });
+                    }
+                    break;
+                case 'Backspace':
+                    if (document.getElementsByClassName('suggestion')[0].classList.contains('active')) {
+                        this.setState({
+                            selectedSuggestionText: undefined
+                        });
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     };
     render() {
@@ -85,19 +137,17 @@ export class Header extends React.Component {
                             <img src="https://www.themoviedb.org/assets/static_cache/27b65cb40d26f78354a4ac5abf87b2be/images/v4/logos/powered-by-rectangle-green.svg" />
                         </a>
                         <div className="search">
-                            <input
-                                list="movies"
-                                type="text"
-                                placeholder="Search Movie Title"
-                                className="text-input"
-                                onChange={e => this.movieNameRequest(e)}
-                                onKeyPress={e => this.movieDetailsRequest(e)}
+                            <SearchBar
+                                userInput={this.state.userInput}
+                                selectedSuggestion={this.state.selectedSuggestionText}
+                                movieNameRequest={this.movieNameRequest}
+                                suggestionChange={this.suggestionChange}
                             />
-                            <datalist id="movies">
-                                {this.state.movies ? this.state.movies.map(movie => {
-                                    return <option key={movie.id} id={movie.id} value={movie.title} />
-                                }) : ''}
-                            </datalist>
+                            <SuggestionsBox
+                                userInput={this.state.userInput}
+                                movies={this.state.movies}
+                                movieDetailsRequest={this.movieDetailsRequest}
+                            />
                         </div>
                     </div>
                 </div>

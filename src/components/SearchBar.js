@@ -1,13 +1,13 @@
 import React from 'react';
 
-const SearchBar = () => (
+const SearchBar = props => (
     <input
-        list="movies"
         type="text"
         placeholder="Search Movie Title"
         className="text-input"
-        onChange={e => this.movieNameRequest(e)}
-        onKeyPress={e => this.movieDetailsRequest(e)}
+        onChange={e => props.movieNameRequest(e)}
+        onKeyDown={e => props.suggestionChange(e)}
+        value={props.selectedSuggestion ? props.selectedSuggestion : props.userInput}
     />
 );
 

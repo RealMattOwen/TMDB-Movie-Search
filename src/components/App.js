@@ -17,12 +17,11 @@ class App extends React.Component {
             voteAverage: 8.1
         }
     };
-    updateMovie = movie => {
-        this.setState(movie);
+    updateMovie = (movie, cb) => {
+        this.setState(movie, cb);
     };
     render() {
         document.getElementsByTagName('body')[0].style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://image.tmdb.org/t/p/original/${this.state.movie.backgroundImage}?api_key=375d33fe34920fdf8cb02b7ce3600ba7')`;
-        // document.getElementsByTagName('body')[0].style.backgroundSize = 'cover';
         return (
             <div className="app">
                 <Header update={this.updateMovie} />

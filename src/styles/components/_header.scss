@@ -1,13 +1,27 @@
 .header__content {
 	align-items: center;
 	display: flex;
-	justify-content: space-between;
-	padding: $l-size 0;
 }
 
 .header__logo {
 	display: flex;
 	img {
 		height: 54px;
+	}
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+	.header__content {
+		padding: $l-size 0 $m-size;
+		flex-direction: column;
+	}
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+	.header__content {
+		justify-content: space-between;
+		flex-direction: row;
 	}
 }

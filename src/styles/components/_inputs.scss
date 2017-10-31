@@ -1,36 +1,48 @@
-.search {
-	width: 45%;
-}
-
 .text-input {
 	border: none;
 	border-bottom: 1px solid white;
-	color: white;
+	color: #fff;
 	background-color: transparent;
 	font-weight: 300;
 	padding: $s-size;
 	outline: none;
 	width: 100%;
 	font-size: 1.5rem;
+}
 
-	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-		color: white;
-	}
-	&::-moz-placeholder { /* Firefox 19+ */
-		color: white;
-	}
-	&:-ms-input-placeholder { /* IE 10+ */
-		color: white;
-	}
-	&:-moz-placeholder { /* Firefox 18- */
-		color: white;
-	}
-
-	&::-webkit-calendar-picker-indicator {
-		display: none;
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+	.search {
+		width: 100%;
+		margin-top: $l-size;
 	}
 }
 
-option {
-	background-color: transparent;
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+	.search {
+		width: 26rem;
+		margin-top: 0;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.search {
+		width: 32rem;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.search {
+		width: 44rem;
+	}
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+	.search {
+		width: 52rem;
+	}
 }
