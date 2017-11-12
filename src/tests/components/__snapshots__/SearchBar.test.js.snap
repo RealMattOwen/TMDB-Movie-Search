@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SearchBar correctly 1`] = `
+<AutoComplete
+  anchorOrigin={
+    Object {
+      "horizontal": "left",
+      "vertical": "bottom",
+    }
+  }
+  animated={true}
+  dataSource={
+    Array [
+      Object {
+        "id": 1,
+        "title": "result 1",
+      },
+      Object {
+        "id": 2,
+        "title": "result 2",
+      },
+    ]
+  }
+  dataSourceConfig={
+    Object {
+      "text": "title",
+      "value": "id",
+    }
+  }
+  disableFocusRipple={true}
+  filter={[Function]}
+  fullWidth={true}
+  hintStyle={
+    Object {
+      "color": "#fff",
+    }
+  }
+  hintText="Search Movie Title"
+  inputStyle={
+    Object {
+      "color": "#fff",
+    }
+  }
+  menuCloseDelay={300}
+  onNewRequest={[Function]}
+  onUpdateInput={[Function]}
+  open={false}
+  openOnFocus={false}
+  targetOrigin={
+    Object {
+      "horizontal": "left",
+      "vertical": "top",
+    }
+  }
+  underlineFocusStyle={
+    Object {
+      "borderBottomColor": "rgba(1,207,115,1)",
+    }
+  }
+/>
+`;

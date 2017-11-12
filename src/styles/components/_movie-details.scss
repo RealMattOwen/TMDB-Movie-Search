@@ -27,7 +27,7 @@
 }
 
 .movie-description {
-	color: rgb(1,207,115);
+	color: rgba(1,207,115,1);
 	margin: 0;
 	font-weight: 500;
 }
@@ -47,7 +47,7 @@
 		font-size: $font-size-small;
 	}
 	h2 {
-		color: rgb(1,207,115);
+		color: rgba(1,207,115,1);
 		margin: 0;
 		font-weight: 500;
 		font-size: 2.4rem;
@@ -87,7 +87,7 @@
 	.movie-description {
 		font-size: 1.65rem;
 		line-height: 1.5;
-		color: rgb(1,207,115);
+		color: rgba(1,207,115,1);
 		margin: 0;
 		font-weight: 600;
 	}
@@ -105,7 +105,7 @@
 			font-size: $font-size-small;
 		}
 		h2 {
-			color: rgb(1,207,115);
+			color: rgba(1,207,115,1);
 			margin: 0;
 			font-weight: 500;
 			font-size: 1.8rem;

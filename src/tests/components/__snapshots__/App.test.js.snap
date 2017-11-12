@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render App correctly 1`] = `
+<div
+  className="app"
+  style={
+    Object {
+      "backgroundImage": "linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://image.tmdb.org/t/p/original//c4zJK1mowcps3wvdrm31knxhur2.jpg?api_key=375d33fe34920fdf8cb02b7ce3600ba7')",
+    }
+  }
+>
+  <Header />
+  <Connect(MovieDetails) />
+</div>
+`;

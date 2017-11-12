@@ -1,8 +1,8 @@
 @import './base/settings';
 @import './base/base';
+@import './components/app';
 @import './components/header';
 @import './components/inputs';
-@import './components/suggestions-box';
 @import './components/content-container';
 @import './components/movie-details';
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
