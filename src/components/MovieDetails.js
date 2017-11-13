@@ -7,7 +7,7 @@ export const MovieDetails = props => (
         <div className="content-container">
             <div className="movie-details">
                 <div className="section">
-                    <img src={`https://image.tmdb.org/t/p/original/${props.movies.movie.coverImage}?api_key=375d33fe34920fdf8cb02b7ce3600ba7`} />
+                    <img src={`https://image.tmdb.org/t/p/w500${props.movies.movie.coverImage}`} />
                 </div>
                 <div className="section">
                     <h1 className="movie-title">{props.movies.movie.title}</h1>

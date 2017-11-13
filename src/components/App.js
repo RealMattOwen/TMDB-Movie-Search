@@ -10,7 +10,7 @@ export class App extends React.Component {
     }
     render() {
         return (
-            <div className="app" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://image.tmdb.org/t/p/original/${this.props.movies.movie.backgroundImage}?api_key=375d33fe34920fdf8cb02b7ce3600ba7')`}}>
+            <div className="app" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://image.tmdb.org/t/p/original${this.props.movies.movie.backgroundImage}')`}}>
                 <Header />
                 <MovieDetails />
             </div>

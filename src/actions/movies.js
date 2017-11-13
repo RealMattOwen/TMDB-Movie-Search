@@ -11,7 +11,6 @@ export const startRequestResults = userInput => {
             .then(res => {
                 if (res.data.results.length) {
                     const movies = res.data.results.slice(0, 5);
-                    console.log(movies);
                     dispatch(requestResults(movies));
                 }
             })
